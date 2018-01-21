@@ -27,53 +27,65 @@ class OwnerDesc extends React.Component<IFormForm, any> {
     handleBack = () => {
         const { back } = this.props;
 
-        if (back)
+        if (back) {
             back();
+        }
     }
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        
+
         return (
             <Wrap>
-            <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem>
-                    <Title>
-                        Телефон
+                <Form onSubmit={this.handleSubmit} className="login-form">
+                    <FormItem>
+                        <Title>
+                            Имя организатора
+                        </Title>
+                        {getFieldDecorator('owner_name', {
+                            initialValue: this.props.default.owner_name,
+                            rules: [{ required: true, message: 'Введите имя' }],
+                        })(
+                            <Input />,
+                        )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Телефон
                     </Title>
-                    {getFieldDecorator('phone', {
-                        initialValue: this.props.default.phone,
-                        rules: [{ required: true, message: 'Укажите телефон' }],
-                    })(
-                        <Input />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <Title>
-                        Email
+                        {getFieldDecorator('phone', {
+                            initialValue: this.props.default.phone,
+                            rules: [{ required: true, message: 'Укажите телефон' }],
+                        })(
+                            <Input />,
+                        )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Email
                     </Title>
-                    {getFieldDecorator('email', {
-                        initialValue: this.props.default.email,
-                        rules: [{ required: true, message: 'Email' }],
-                    })(
-                        <Input />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <Button
-                        onClick={this.handleBack}
-                    >
-                        Назад
-                    </Button>
-                    <Button 
-                        type="primary"
-                        htmlType="submit" 
-                        className="login-form-button"
-                    >
-                        Далее
-                    </Button>
-                </FormItem>
-            </Form>
+                        {getFieldDecorator('owner_email', {
+                            initialValue: this.props.default.owner_email,
+                            rules: [{ required: true, message: 'Email' }],
+                        })(
+                            <Input />,
+                        )}
+                    </FormItem>
+                    <FormItem>
+                        <Button
+                            onClick={this.handleBack}
+                        >
+                            Назад
+                        </Button>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            className="login-form-button"
+                        >
+                            Далее
+                        </Button>
+                    </FormItem>
+                </Form>
             </Wrap>
         );
     }

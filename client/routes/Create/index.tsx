@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Steps } from 'antd';
+import { Steps, message } from 'antd';
 const Step = Steps.Step;
 
 import { Step1 } from './Step1';
@@ -52,23 +52,24 @@ export default class CreateForm extends React.Component<{}, IState> {
     onStep4Submit = (data) => {
         const { state } = this;
 
-        let event = {
+        const event = {
             ...state.dataStep1,
             ...state.dataStep2,
             ...state.dataStep3,
-            contract_adr: wallet.getAddr()
-        }
+            contract_adr: wallet.getAddr(),
+        };
 
         api.createEvent(event).then((response) => {
+            message.success('Событие успешно создано');
             console.log('complete', response);
-        })
+        });
     }
 
     onBack = () => {
         this.setState((state: IState) => ({
             ...state,
             step: state.step - 1,
-        }))
+        }));
     }
 
     render() {
