@@ -5,7 +5,8 @@ const antdLocale = require('antd/lib/locale-provider/ru_RU');
 
 import AppContainer from '../routes';
 import store from '../store';
-import 'antd/dist/antd.min.css';
+import 'antd/dist/antd.less';
+import './style.less';
 
 const App = (Component) => {
     return class Application extends React.Component<any, any> {

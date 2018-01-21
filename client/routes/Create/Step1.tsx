@@ -6,8 +6,10 @@ const { TextArea } = Input;
 
 import styled from 'styled-components';
 import { ITheme } from '../../models/theme';
+// import { Button } from './../../components';
 
 interface IFormForm extends FormComponentProps {
+    default: any;
     submit?: (formObject) => void;
 }
 
@@ -31,6 +33,7 @@ class CreateDesc extends React.Component<IFormForm, any> {
                         Название
                     </Title>
                     {getFieldDecorator('name', {
+                        initialValue: this.props.default.name,
                         rules: [{ required: true, message: 'Укажите имя события!' }],
                     })(
                         <Input />
@@ -41,6 +44,7 @@ class CreateDesc extends React.Component<IFormForm, any> {
                         Короткое описание
                     </Title>
                     {getFieldDecorator('short_desc', {
+                        initialValue: this.props.default.short_desc,
                         rules: [{ required: true, message: 'Введите короткое описание' }],
                     })(
                         <TextArea rows={4} />
@@ -51,6 +55,7 @@ class CreateDesc extends React.Component<IFormForm, any> {
                         Полное описание
                     </Title>
                     {getFieldDecorator('long_desc', {
+                        initialValue: this.props.default.long_desc,
                         rules: [{ required: true, message: 'Введите короткое описание' }],
                     })(
                         <TextArea rows={10} />
@@ -61,6 +66,7 @@ class CreateDesc extends React.Component<IFormForm, any> {
                         Дата и время события
                     </Title>
                     {getFieldDecorator('ev_date', {
+                        initialValue: this.props.default.ev_date,
                         rules: [{ required: true, message: 'Введите дату' }],
                     })(
                         <DatePicker
@@ -75,19 +81,20 @@ class CreateDesc extends React.Component<IFormForm, any> {
                         Координаты события
                     </Title>
                     {getFieldDecorator('location', {
+                        initialValue: this.props.default.location,
                         rules: [{ required: true, message: 'Введите координаты' }],
                     })(
                         <Input />
                     )}
                 </FormItem>
                 <FormItem>
-                    <StyledBtn 
+                    <StyleBtn 
                         type="primary"
                         htmlType="submit" 
                         className="login-form-button"
                     >
                         Далее
-                    </StyledBtn>
+                    </StyleBtn>
                 </FormItem>
             </Form>
             </Wrap>
@@ -103,7 +110,7 @@ const Wrap = styled.div`
 
 const Title = styled.div``;
 
-const StyledBtn = styled(Button)`
+export const StyleBtn = styled(Button)`
     background: ${(props: ITheme) => props.theme.color.primary};
     border-color: ${(props: ITheme) => props.theme.color.primary};
 
