@@ -39,6 +39,7 @@
     "inert": "^4.2.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "moment": "^2.20.1",
     "nunjucks": "^3.0.1",
     "pg-promise": "^7.4.0",
     "react": "^16.2.0",

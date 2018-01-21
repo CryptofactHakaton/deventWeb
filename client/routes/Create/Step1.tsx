@@ -24,79 +24,90 @@ class CreateDesc extends React.Component<IFormForm, any> {
     }
     render() {
         const { getFieldDecorator } = this.props.form;
-        
+
         return (
             <Wrap>
-            <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem>
-                    <Title>
-                        Название
+                <Form onSubmit={this.handleSubmit} className="login-form">
+                    <FormItem>
+                        <Title>
+                            Название
                     </Title>
-                    {getFieldDecorator('name', {
-                        initialValue: this.props.default.name,
-                        rules: [{ required: true, message: 'Укажите имя события!' }],
-                    })(
-                        <Input />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <Title>
-                        Короткое описание
+                        {getFieldDecorator('name', {
+                            initialValue: this.props.default.name,
+                            rules: [{ required: true, message: 'Укажите имя события!' }],
+                        })(
+                            <Input />
+                            )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Короткое описание
                     </Title>
-                    {getFieldDecorator('short_desc', {
-                        initialValue: this.props.default.short_desc,
-                        rules: [{ required: true, message: 'Введите короткое описание' }],
-                    })(
-                        <TextArea rows={4} />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <Title>
-                        Полное описание
+                        {getFieldDecorator('short_desc', {
+                            initialValue: this.props.default.short_desc,
+                            rules: [{ required: true, message: 'Введите короткое описание' }],
+                        })(
+                            <TextArea rows={4} />
+                            )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Полное описание
                     </Title>
-                    {getFieldDecorator('long_desc', {
-                        initialValue: this.props.default.long_desc,
-                        rules: [{ required: true, message: 'Введите короткое описание' }],
-                    })(
-                        <TextArea rows={10} />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <Title>
-                        Дата и время события
+                        {getFieldDecorator('long_desc', {
+                            initialValue: this.props.default.long_desc,
+                            rules: [{ required: true, message: 'Введите короткое описание' }],
+                        })(
+                            <TextArea rows={10} />
+                            )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Дата и время события
                     </Title>
-                    {getFieldDecorator('ev_date', {
-                        initialValue: this.props.default.ev_date,
-                        rules: [{ required: true, message: 'Введите дату' }],
-                    })(
-                        <DatePicker
-                            showTime
-                            format="YYYY-MM-DD HH:mm:ss"
-                            placeholder=""
-                        />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <Title>
-                        Координаты события
+                        {getFieldDecorator('evnt_date', {
+                            initialValue: this.props.default.ev_date,
+                            rules: [{ required: true, message: 'Введите дату' }],
+                        })(
+                            <DatePicker
+                                showTime
+                                format="YYYY-MM-DD HH:mm:ss"
+                                placeholder=""
+                            />
+                            )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Город
                     </Title>
-                    {getFieldDecorator('location', {
-                        initialValue: this.props.default.location,
-                        rules: [{ required: true, message: 'Введите координаты' }],
-                    })(
-                        <Input />
-                    )}
-                </FormItem>
-                <FormItem>
-                    <StyleBtn 
-                        type="primary"
-                        htmlType="submit" 
-                        className="login-form-button"
-                    >
-                        Далее
+                        {getFieldDecorator('city', {
+                            initialValue: this.props.default.city,
+                            rules: [{ required: true, message: 'Введите город' }],
+                        })(
+                            <Input />
+                            )}
+                    </FormItem>
+                    <FormItem>
+                        <Title>
+                            Координаты события
+                    </Title>
+                        {getFieldDecorator('location', {
+                            initialValue: this.props.default.location,
+                            rules: [{ required: true, message: 'Введите координаты' }],
+                        })(
+                            <Input />
+                            )}
+                    </FormItem>
+                    <FormItem>
+                        <StyleBtn
+                            type="primary"
+                            htmlType="submit"
+                            className="login-form-button"
+                        >
+                            Далее
                     </StyleBtn>
-                </FormItem>
-            </Form>
+                    </FormItem>
+                </Form>
             </Wrap>
         );
     }
@@ -110,7 +121,7 @@ const Wrap = styled.div`
 
 const Title = styled.div``;
 
-export const StyleBtn = styled(Button)`
+export const StyleBtn = styled(Button) `
     background: ${(props: ITheme) => props.theme.color.primary};
     border-color: ${(props: ITheme) => props.theme.color.primary};
 

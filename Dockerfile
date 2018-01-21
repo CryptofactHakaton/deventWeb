@@ -1,9 +1,9 @@
 FROM node:latest
 WORKDIR /app
 COPY package.json ./
-RUN yarn
+RUN npm i
 COPY . .
-RUN yarn build
+RUN npm build
 
 CMD yarn prod
 EXPOSE 3000

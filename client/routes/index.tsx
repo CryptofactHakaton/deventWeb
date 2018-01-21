@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 
-import theme from '../models/theme'
+import theme from '../models/theme';
 
 import Create from './Create';
 import List from './List';
 import Shell from './Shell';
+import Details from './Details';
 
 export interface IRoutesProps extends React.Props<any> {}
 export class Routes extends React.Component<IRoutesProps, any> {
@@ -20,6 +21,7 @@ export class Routes extends React.Component<IRoutesProps, any> {
                         <AppWrapper>
                             <Switch>
                                 <Route exact path={'/new'} component={Create} />
+                                <Route exact path={'/:id'} component={Details} />
                                 <Route exact path={'/'} component={List} />
                                 <Redirect to={'/'} />
                             </Switch>

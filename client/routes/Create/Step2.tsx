@@ -41,8 +41,8 @@ class TicketDesc extends React.Component<IFormForm, any> {
                     <Title>
                         Softcap
                     </Title>
-                    {getFieldDecorator('soft', {
-                        initialValue: this.props.default.soft,
+                    {getFieldDecorator('softcap', {
+                        initialValue: this.props.default.softcap,
                         rules: [{ required: true, message: 'Укажите нижнюю границу' }],
                     })(
                         <Input />
@@ -52,8 +52,8 @@ class TicketDesc extends React.Component<IFormForm, any> {
                     <Title>
                         HardCap
                     </Title>
-                    {getFieldDecorator('hard', {
-                        initialValue: this.props.default.hard,
+                    {getFieldDecorator('hardcap', {
+                        initialValue: this.props.default.hardcap,
                         rules: [{ required: true, message: 'Укажите верхнюю границу' }],
                     })(
                         <Input />

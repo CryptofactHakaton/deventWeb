@@ -69,5 +69,5 @@ const Link = styled(NavLink) `
     cursor: pointer;
     &:hover {
         color: ${(props: ITheme) => props.theme.color.primary};
-}
+    }
 `;

@@ -124,5 +124,3 @@ const Wrapper = styled.div`
 const SingleInput = styled.div`
     margin: 10px;
 `;
-
-

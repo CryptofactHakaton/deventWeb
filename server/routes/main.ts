@@ -33,10 +33,11 @@ export default (server) => {
 
     server.route({
         method: 'GET',
-        path: '/api/events/{id*}',
+        path: '/api/events/{id}',
         config: {
             handler: (req, reply) => {
                 const { id } = req.params;
+
                 evnt.get(id).then((ev) => {
                     reply(ev);
                 });
