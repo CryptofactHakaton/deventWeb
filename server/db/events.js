@@ -19,6 +19,11 @@ module.exports = function(db) {
         },
         all: function() {
             return db.any('SELECT * FROM events_tab')
+        },
+        add_buyer: function (buyer) {
+            return db.one(
+                'INSERT INTO tickets_tab (evnt_id, mail, eth_adr) VALUES ($1, $2, $3)', [buyer.evnt_id, buyer.mail, buyer.eth_adr ]
+            )
         }
     }
 }
