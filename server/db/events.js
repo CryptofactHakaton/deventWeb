@@ -4,7 +4,7 @@ module.exports = function(db) {
             return new Promise((resolve, reject) => {
                 db.one(
                     'INSERT INTO events_tab (﻿name, short_desc, long_desc,﻿evnt_date,﻿location,﻿phone,﻿city,﻿owner_name,﻿owner_mail,﻿softcap, hardcap,﻿price,﻿end_sale_date,﻿contract_adr) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING evnt_id',
-                    [event.type, event.name, event.short_desc, event.long_desc, event.evnt_date, event.location, event.phone, event.city, event.owner_name, event.owner_mail, event.softcap, event.hardcap, event.price, event.end_sale_date, event.contract_adr ]
+                    [event.name, event.short_desc, event.long_desc, event.evnt_date, event.location, event.phone, event.city, event.owner_name, event.owner_mail, event.softcap, event.hardcap, event.price, event.end_sale_date, event.contract_adr ]
                 )
                     .then(row => {
                         resolve(row.evnt_id)
