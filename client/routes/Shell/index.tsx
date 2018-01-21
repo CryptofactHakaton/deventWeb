@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { Icon } from 'antd';
 
 import { ITheme } from '../../models/theme';
@@ -9,12 +10,20 @@ export default class Shell extends React.Component<{}, {}> {
         return (
             <Wrapper>
                 <Title>
-                    <Marked>DE</Marked>vent
+                    <Link
+                        exact
+                        to={'/'}
+                    >
+                        <Marked>DE</Marked>vent
+                    </Link>
                 </Title>
                 <Actions>
-                    <Add>
+                    <Link
+                        exact
+                        to={'/new'}
+                    >
                         + создать
-                    </Add>
+                    </Link>
                 </Actions>
             </Wrapper>
         );
@@ -49,4 +58,16 @@ const Add = styled.div`
     &:hover {
         color: ${(props: ITheme) => props.theme.color.primary};
     }
+`;
+
+const Link = styled(NavLink) `
+    color: #333;
+    &:focus {
+        text-decoration: none;
+    }
+
+    cursor: pointer;
+    &:hover {
+        color: ${(props: ITheme) => props.theme.color.primary};
+}
 `;

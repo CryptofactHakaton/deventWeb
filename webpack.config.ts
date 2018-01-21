@@ -12,6 +12,12 @@ const plugins = [
     })
 ];
 
+let theme: {
+	"theme": {
+		"primary-color": "#36cfc9",
+	}
+}
+
 const config: any = {
 	devtool: false,
 	entry: [
@@ -30,11 +36,23 @@ const config: any = {
 		loaders: [
 			{
 				test: /\.(ts|tsx)$/,
-				loader: ['react-hot-loader/webpack', 'awesome-typescript-loader']
+				use: ['react-hot-loader/webpack', 'awesome-typescript-loader']
 			},
 			{
 				test: /\.css$/,
-				loader: ['style-loader', 'css-loader']
+				use: ['style-loader', 'css-loader']
+			},
+			{
+				test: /\.less$/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader"
+				}, {
+					loader: "less-loader", options: {
+						modifyVars: `${JSON.stringify(theme)}`
+					}
+				}]
 			},
 		]
 	},
