@@ -37,6 +37,7 @@
     "html-webpack-plugin": "^2.30.1",
     "inert": "^4.2.1",
     "nunjucks": "^3.0.1",
+    "pg-promise": "^7.4.0",
     "react": "^16.2.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.0.0-beta.7",

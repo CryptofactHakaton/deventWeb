@@ -1,3 +1,9 @@
+// Postgres
+const pg = require('../config/postgres');
+const pgp = require('pg-promise')();
+const db = pgp(pg);
+const evnt = require('../db/events')(db);
+
 export default (server) => {
 
     server.route({
@@ -5,10 +11,10 @@ export default (server) => {
         path: '/api/event',
         config: {
             handler: (req, reply) => {
-
-                // TODO: create new event
-
-                reply('done');
+                const { payload } = req;
+                evnt.create(payload).then((id) => {
+                    reply(id);
+                });
             },
         },
     });
@@ -18,25 +24,22 @@ export default (server) => {
         path: '/api/events',
         config: {
             handler: (req, reply) => {
-
-                // TODO: get list of events
-
-                reply('done');
+                evnt.all().then((events) => {
+                    reply(events);
+                });
             },
         },
     });
-    
+
     server.route({
         method: 'GET',
         path: '/api/events/{id*}',
         config: {
             handler: (req, reply) => {
-
                 const { id } = req.params;
-                // console.log(id);
-                // TODO: get one event
-
-                reply('done');
+                evnt.get(id).then((ev) => {
+                    reply(ev);
+                });
             },
         },
     });
