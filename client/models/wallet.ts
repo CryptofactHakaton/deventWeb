@@ -13,14 +13,17 @@ class Wallet {
             return this.web3.eth.accounts[0];
         }
     }
-    
+
     sendTransaction(data, cb) {
-        this.web3.eth.sendTransaction({
+        const opts = {
             ...data,
-            from: this.getAddr()
-        }, function(err, transactionHash) {
-            if (!err)
-            cb(transactionHash);
+            from: this.getAddr(),
+        };
+
+        this.web3.eth.sendTransaction(opts, function (err, transactionHash) {
+            if (!err) {
+                cb(transactionHash);
+            }
         });
     }
 }

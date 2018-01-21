@@ -39,11 +39,14 @@ export class Item extends React.Component<any, {}> {
 }
 
 const Wrapper = styled.div`
-    margin: 10px 0 20px;
+    display: inline-block;
+    margin: 10px 10px;
     padding: 5px 20px;
+    width: 380px;
+    background: #e6fffb;
 
     &:hover {
-        background: #eee;
+        background: #b5f5ec;
     }
 `;
 

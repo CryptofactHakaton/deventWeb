@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Button, InputNumber, Input, message } from 'antd';
+import { Button, InputNumber, Input, message, Spin } from 'antd';
 
 import { api } from './../../api';
 import { wallet } from './../../models';
@@ -40,24 +40,35 @@ export default class Details extends React.Component<any, {}> {
     }
 
     submit = () => {
+        const { event, count } = this.state;
         const id = this.props.match.params.id;
+        const cost = event.price * count;
 
-        api.buyTicket(id, this.state.email, wallet.getAddr()).then((response) => {
-            if (response.status === 200) {
-                message.success('Билеты успешно куплены');
-            } else {
-                message.error('Произошла ошибка');
-            }
-        });
+        if (cost) {
+            wallet.sendTransaction({
+                // value: "0x0de0b6b3a7640000",
+                value: cost,
+            }, () => {
+                api.buyTicket(id, this.state.email, wallet.getAddr()).then((response) => {
+                    if (response.status === 200) {
+                        message.success('Билеты успешно куплены');
+                    } else {
+                        message.error('Произошла ошибка');
+                    }
+                });
+            });
+        }
     }
 
     render() {
-        const { event } = this.state;
+        const { event, count } = this.state;
 
         if (!event) {
             return (
                 <Wrapper>
-                    Loading...
+                    <Centr>
+                        <Spin size="large" />
+                    </Centr>
                 </Wrapper>
             );
         }
@@ -93,6 +104,11 @@ export default class Details extends React.Component<any, {}> {
                     <Intro>
                         Регистрация на событие:
                     </Intro>
+                    <InputName>Ваш кошелек:</InputName>
+                    <Input
+                        value={wallet.getAddr()}
+                        disabled
+                    />
                     <InputName>Количество билетов:</InputName>
                     <InputNumber
                         value={this.state.count}
@@ -104,6 +120,7 @@ export default class Details extends React.Component<any, {}> {
                         onChange={this.onEmailChange}
                     />
                     <Button
+                        disabled={count < 1}
                         type="primary"
                         onClick={this.submit}
                     >
@@ -130,3 +147,7 @@ const Val = styled.div``;
 
 const Intro = styled.h4``;
 const InputName = styled.div``;
+
+const Centr = styled.div`
+    text-align: center;
+`;
