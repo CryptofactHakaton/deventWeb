@@ -52,7 +52,9 @@ export default (server) => {
             handler: (req, reply) => {
 
                 const { id } = req.params;
-                // console.log(id);
+                const { addr, email } = req.payload;
+
+                console.log(id, addr, email);
                 // TODO: buy ticket on event
 
                 reply('done');

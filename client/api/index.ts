@@ -20,4 +20,14 @@ export const api = {
             method: 'GET',
         });
     },
+    buyTicket: (id, email, addr) => {
+        return axios({
+            url: `/api/event/${id}/buy`,
+            method: 'POST',
+            data: {
+                email,
+                addr,
+            },
+        });
+    },
 };
