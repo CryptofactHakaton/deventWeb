@@ -1,1 +1,1 @@
-DEvent team Rostov on Don Hackcaton
+DEvent team, Rostov on Don Hackaton
